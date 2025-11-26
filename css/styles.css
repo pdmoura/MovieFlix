@@ -1,0 +1,251 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-color: #e50914;
+	--primary-color-dark: #b8070f;
+	--rating-dark: #990008;
+	--dark-bg: #141414;
+	--card-bg: #181818;
+	--text-light: #ffffff;
+	--text-med: #cccccc;
+	--text-dark: #999999;
+	--card-border: rgba(255, 255, 255, 0.1);
+}
+
+html {
+	scrollbar-gutter: stable;
+}
+
+body {
+	font-family: "Roboto", Arial, sans-serif;
+	background-color: var(--dark-bg);
+	color: var(--text-light);
+	line-height: 1.6;
+	min-height: 100dvh;
+	overflow-x: hidden;
+	position: relative;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  background-color: #0a0a0a;
+	background-image: url("../images/hero-mobile.webp");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+  background-attachment: scroll;
+	z-index: -1;
+	transform: translateZ(0);
+	will-change: opacity;
+}
+
+@media (min-width: 768px) {
+    body::before {
+        background-image: url("../images/large-hero1.webp");
+        background-attachment: fixed;
+    }
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.header {
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.8) 0%,
+		rgba(0, 0, 0, 0.4) 100%
+	);
+	padding: 20px;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	backdrop-filter: blur(10px);
+}
+
+.logo {
+	font-size: 2.5em;
+	font-weight: bold;
+	color: var(--text-light);
+	margin-bottom: 20px;
+	text-align: center;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo img {
+	width: 50px;
+	height: auto;
+}
+
+.logo span {
+	padding: 0 0.8rem;
+}
+
+.search-container {
+	display: flex;
+	gap: 15px;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+    min-height: 44px;
+}
+
+.search-box {
+	flex: 1;
+	min-width: 300px;
+	max-width: 500px;
+	position: relative;
+    height: 44px;
+}
+
+.search-input {
+	width: 100%;
+	padding: 12px 20px;
+	border: 2px solid #333;
+	border-radius: 25px;
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	font-size: 16px;
+	outline: none;
+	transition: all 0.3s ease;
+    height: 44px;
+}
+
+.search-input:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+}
+
+.filters {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+select {
+	padding: 8px 15px;
+	border: 1px solid #333;
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	font-size: 14px;
+	outline: none;
+	cursor: pointer;
+    height: 44px;
+}
+
+select:focus {
+	border-color: var(--primary-color);
+}
+
+.btn-base {
+	padding: 8px 20px;
+	color: white;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: background 0.3s ease;
+    height: 44px;
+    white-space: nowrap;
+}
+
+.btn-primary {
+	background: var(--rating-dark);
+}
+.btn-primary:hover {
+	background: var(--primary-color-dark);
+}
+
+.btn-secondary {
+	background: #444;
+}
+.btn-secondary:hover {
+	background: #555;
+}
+
+.clear-btn {
+	display: none;
+}
+
+.clear-btn.show {
+	display: inline-block;
+}
+
+.main-content {
+	padding: 20px;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+footer {
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.8) 0%,
+		rgba(0, 0, 0, 0.4) 100%
+	);
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	padding: 20px 0;
+	margin-top: auto;
+}
+
+.social-icons {
+	display: flex;
+	justify-content: space-evenly;
+	gap: 1rem;
+	padding: 16px;
+	align-items: center;
+}
+
+.social-icon {
+	text-decoration: none;
+	cursor: pointer;
+	svg {
+		height: 40px;
+		width: 40px;
+		fill: var(--rating-dark);
+	}
+}
+.social-icon:hover {
+	svg {
+		opacity: 0.5;
+	}
+}
+
+/* --- Hamburger Menu Styles --- */
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+}
+
+.icon-close {
+    display: none;
+}
+
+.header-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
