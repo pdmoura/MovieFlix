@@ -15,18 +15,24 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preload" as="image" href="images/hero-mobile.webp" fetchpriority="high" media="(max-width: 767px)">
+        <link rel="preload" as="image" href="images/large-hero1.webp" fetchpriority="high" media="(min-width: 768px)">
+        <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <noscript>
+            <link rel="stylesheet" href="css/styles.css" />
+        </noscript>
         <script type="module" src="js/main.js"></script>
     </head>
     <body>
         <header class="header">
             <div class="header-top">
                 <div class="logo" id="logo"> 
-                    <img src="images/movieflix-logo2.png" alt="Glasses Logo" height="60" width="60">
-                    <span>MovieFlix</span>
-                    <img src="images/movieflix-logo.png" alt="Popcorn Logo" height="60" width="60">
+                    <img src="images/movieflix-logo2.png" alt="Logo 3D glasses" fetchpriority="high" height="60" width="60">
                     <!-- <img src="https://cdn-icons-png.flaticon.com/512/2503/2503508.png" alt="MovieFlix Logo" width="60" height="60"> -->
+                    <span>MovieFlix</span>
+                    <img src="images/movieflix-logo.png" alt="Logo Popcorn" height="60" width="60">
                 </div>
+
                 <button class="menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
                     <span class="icon-menu">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
@@ -36,23 +42,39 @@
                     </span>
                 </button>
             </div>
+
             <div class="search-container" id="searchContainer">
                 <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Search for movies..." id="searchInput" />
+                    <input
+                        type="text"
+                        class="search-input"
+                        placeholder="Search for movies..."
+                        id="searchInput"
+                    />
                 </div>
                 <div class="filters">
-                    <select id="genreFilter"><option value="">All Genres</option></select>
-                    <select id="yearFilter"><option value="">All Years</option></select>
-                    <select id="sortFilter">
+                    <select id="genreFilter" aria-label="Filter movies by genre">
+                        <option value="">All Genres</option>
+                    </select>
+                    <select id="yearFilter" aria-label="Filter movies by year">
+                        <option value="">All Years</option>
+                    </select>
+                    <select id="sortFilter" aria-label="Sort movies">
                         <option value="">No Sort</option>
                         <option value="popularity.desc">Most Popular</option>
                         <option value="vote_average.desc">Highest Rated</option>
-                        <option value="release_date.desc">Latest Release</option>
+                        <option value="release_date.desc">
+                            Latest Release
+                        </option>
                         <option value="title.asc">A-Z</option>
                     </select>
                 </div>
-                <button class="btn-base btn-secondary" id="favoritesBtn">❤️ My Favorites</button>
-                <button class="btn-base btn-primary clear-btn" id="clearBtn">Clear All</button>
+                <button class="btn-base btn-secondary" id="favoritesBtn" aria-label="Favorites Button">
+                    ❤️ My Favorites
+                </button>
+                <button class="btn-base btn-primary clear-btn" id="clearBtn" aria-label="Clear Filter Button">
+                    Clear All
+                </button>
             </div>
         </header>
 
@@ -60,18 +82,59 @@
             <div id="trendingSection">
                 <div class="section-title">🔥 Trending Now</div>
                 <div class="carousel-container">
-                    <button class="carousel-btn prev" id="trendingPrev">&larr;</button>
-                    <div class="carousel" id="trendingCarousel"></div>
-                    <button class="carousel-btn next" id="trendingNext">&rarr;</button>
+                    <button class="carousel-btn prev" id="trendingPrev" aria-label="Previous Button">
+                        &larr;
+                    </button>
+                    <div class="carousel" id="trendingCarousel" aria-label="Next Button">
+                        <!-- Trending movies will be injected here by ui.js -->
+                        <div class="trending-card base-card skeleton">
+                            <div style="aspect-ratio: 2/3;"></div>
+                        </div>
+                        <div class="trending-card base-card skeleton">
+                            <div style="aspect-ratio: 2/3;"></div>
+                        </div>
+                        <div class="trending-card base-card skeleton">
+                            <div style="aspect-ratio: 2/3;"></div>
+                        </div>
+                        <div class="trending-card base-card skeleton">
+                            <div style="aspect-ratio: 2/3;"></div>
+                        </div>
+                        <div class="trending-card base-card skeleton">
+                            <div style="aspect-ratio: 2/3;"></div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="trendingNext">
+                        &rarr;
+                    </button>
                 </div>
             </div>
+
             <div class="section-title" id="randomSectionTitle">
-                <img src="https://cdn-icons-png.flaticon.com/512/2503/2503508.png" width="38" height="38">
+                <!-- <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="40px"
+                    viewBox="0 -960 960 960"
+                    width="40px"
+                    fill="#FFFFFF"
+                >
+                    <path
+                        d="m146.67-800 76 154.67h126.66l-76-154.67h86l76 154.67H562L486-800h86l76 154.67h126.67l-76-154.67h114.66q27 0 46.84 19.83Q880-760.33 880-733.33v506.66q0 27-19.83 46.84Q840.33-160 813.33-160H146.67q-27 0-46.84-19.83Q80-199.67 80-226.67v-506.66q0-27 19.83-46.84Q119.67-800 146.67-800Zm0 221.33v352h666.66v-352H146.67Zm0 0v352-352Z"
+                    />
+                </svg> -->
+                <img src="https://cdn-icons-png.flaticon.com/512/2503/2503508.png" alt="MovieFlix Logo" width="38" height="38">
                 <span>Discover Movies</span>
             </div>
-            <div class="movies-grid" id="moviesGrid"></div>
+            <div class="movies-grid" id="moviesGrid">
+                <!-- Movies will be injected here by ui.js -->
+                <div class="base-card skeleton" style="aspect-ratio: 2/3; background: #222;"></div>
+                <div class="base-card skeleton" style="aspect-ratio: 2/3; background: #222;"></div>
+                <div class="base-card skeleton" style="aspect-ratio: 2/3; background: #222;"></div>
+                <div class="base-card skeleton" style="aspect-ratio: 2/3; background: #222;"></div>
+                <div class="base-card skeleton" style="aspect-ratio: 2/3; background: #222;"></div>
+                <div class="base-card skeleton" style="aspect-ratio: 2/3; background: #222;"></div>
+            </div>
         </main>
-        
+
         <footer>
             <div>
                 <p>&copy; MovieFlix - All rights reserved.</p>
@@ -102,5 +165,16 @@
             </div>
             <p>Made By <strong>Pedro Alves</strong> - WDD330</p>
         </footer>
+
+        <!-- Movie Details Modal -->
+        <div class="modal-overlay" id="movieDetailsModal">
+            <div class="modal-content">
+                <button class="modal-close-btn" id="modalCloseBtn">×</button>
+                <div id="modalContentContainer">
+                    <!-- Modal content will be injected here by ui.js -->
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>
