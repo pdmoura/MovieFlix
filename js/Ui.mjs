@@ -65,3 +65,12 @@ function createMovieCard(movie, genresMap, favoritesSet) {
         </div>
     `;
 }
+
+export function displayMovies(container, movies, genresMap, favoritesSet) {
+    if (movies.length === 0) {
+        container.innerHTML = '<div class="no-results">No movies found</div>';
+        return;
+    }
+    // We pass genresMap and favoritesSet for later, or simplify for now
+    container.innerHTML = movies.map(movie => createMovieCard(movie)).join('');
+}
