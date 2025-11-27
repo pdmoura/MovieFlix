@@ -128,11 +128,12 @@ function createMovieCard(movie, genresMap, favoritesSet) {
  * @param {Set<string>} favoritesSet - A set of favorite movie IDs.
  */
 export function displayMovies(container, movies, genresMap, favoritesSet) {
-    if (movies.length === 0) {
+    const validMovies = movies.filter(movie => movie.poster_path);
+    if (validMovies.length === 0) {
         showNoResults(container);
         return;
     }
-    container.innerHTML = movies.map(movie => createMovieCard(movie, genresMap, favoritesSet)).join('');
+    container.innerHTML = validMovies.map(movie => createMovieCard(movie, genresMap, favoritesSet)).join('');
 }
 
 /**
