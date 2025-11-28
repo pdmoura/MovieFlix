@@ -9,7 +9,7 @@ import { API_KEY } from './Config.mjs';
 import { showApiKeyError } from './Ui.mjs';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if the API key is provided in config.js
+    // Check if the API key is provided in Config.mjs
     if (!API_KEY) {
         // If not, display an error message and stop initialization
         showApiKeyError();

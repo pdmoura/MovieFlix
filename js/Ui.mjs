@@ -1,5 +1,5 @@
 /**
- * ui.js
+ * Ui.mjs
  * * This module is responsible for all DOM manipulation.
  * It selects elements, creates HTML strings, and updates the page.
  * It does not contain any application logic (state management) or API calls.

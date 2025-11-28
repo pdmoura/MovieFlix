@@ -1,5 +1,5 @@
 /**
- * api.js
+ * Api.mjs
  * * This module handles all API requests to The Movie Database (TMDB).
  * * It includes LOCALSTORAGE CACHING to reduce API calls.
  */

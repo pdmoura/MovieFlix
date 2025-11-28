@@ -1,5 +1,5 @@
 /**
- * app.js
+ * App.mjs
  * * The main application controller.
  * This class manages the application's state, coordinates all user
  * interactions, fetches data via the API module, and updates the
